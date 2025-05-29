@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/config-server/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dcto-frecuente/dcto-frecuente/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dcto-personas/dcto-personas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-server/gateway-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rack-semanal/rack-semanal/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registro-comprobantes/registro-comprobantes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reportes/reportes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tarifa-reserva/tarifa-reserva/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tarifas-especiales/tarifas-especiales/src/main/java" charset="UTF-8" />
+  </component>
+</project>

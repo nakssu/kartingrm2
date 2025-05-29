@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for demo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="rack-semanal" />
+        <module name="config-server" />
+        <module name="registro-comprobantes" />
+        <module name="dcto-personas" />
+        <module name="reportes" />
+        <module name="gateway-server" />
+        <module name="dcto-frecuente" />
+        <module name="tarifa-reserva" />
+        <module name="eureka-server" />
+      </profile>
+      <profile name="Annotation profile for tarifas-especiales" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="tarifas-especiales" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-server" options="-parameters" />
+      <module name="dcto-frecuente" options="-parameters" />
+      <module name="dcto-personas" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="gateway-server" options="-parameters" />
+      <module name="rack-semanal" options="-parameters" />
+      <module name="registro-comprobantes" options="-parameters" />
+      <module name="reportes" options="-parameters" />
+      <module name="tarifa-reserva" options="-parameters" />
+      <module name="tarifas-especiales" options="-parameters" />
+    </option>
+  </component>
+</project>
