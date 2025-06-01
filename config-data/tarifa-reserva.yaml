@@ -2,9 +2,9 @@ server:
   port: 8091
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ms-vehicleDB
+    url: jdbc:postgresql://localhost:5432/tarifa_reserva_db
     username: postgres
-    password: 1234
+    password: Admin
 eureka:
   instance:
     hostname: localhost
@@ -13,3 +13,20 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:8761/eureka
+
+
+#spring:
+  #datasource:
+    #url: jdbc:postgresql://postgres-service:5432/tarifa_reserva_db
+    #username: YOUR_DB_USER
+    #password: YOUR_DB_PASS
+    #driver-class-name: org.postgresql.Driver
+  #jpa:
+    #hibernate:
+      #ddl-auto: update
+    #show-sql: false
+
+#eureka:
+  #client:
+    #service-url:
+      #defaultZone: http://eureka-server:8761/eureka
