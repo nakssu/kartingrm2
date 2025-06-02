@@ -13,4 +13,10 @@ public interface ReservaFeignClient {
             @RequestParam(value = "fechaInicio", required = false) String fechaInicio,
             @RequestParam(value = "fechaFin", required = false) String fechaFin
     );
+
+    @GetMapping("/api/reservas/por-fechas")
+    List<ReservaDTO> getReservasPorFechas(
+            @RequestParam("inicio") String inicio,
+            @RequestParam("fin") String fin
+    );
 }

@@ -4,10 +4,8 @@ import com.rack_semanal.rack_semanal.DTO.RackOcupacionDTO;
 import org.springframework.stereotype.Service;
 
 import com.rack_semanal.rack_semanal.DTO.ReservaDTO;
-import com.rack_semanal.rack_semanal.DTO.RackOcupacionDTO;
 import com.rack_semanal.rack_semanal.clients.ReservaFeignClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

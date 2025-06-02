@@ -6,6 +6,7 @@ import com.reportes.reportes.services.ReporteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -16,13 +17,17 @@ public class ReporteController {
 
     // Reporte de ingresos por tipo de reserva (número de vueltas o tiempo máximo)
     @GetMapping("/ingresos-vueltas")
-    public List<IngresoPorVueltasDTO> reportePorVueltas() {
-        return reporteService.reporteIngresosPorVueltas();
+    public List<IngresoPorVueltasDTO> reportePorVueltas(
+            @RequestParam LocalDate fechaInicio,
+            @RequestParam LocalDate fechaFin) {
+        return reporteService.reporteIngresosPorVueltas(fechaInicio, fechaFin);
     }
 
     // Reporte de ingresos por número de personas
     @GetMapping("/ingresos-personas")
-    public List<IngresoPorPersonasDTO> reportePorPersonas() {
-        return reporteService.reporteIngresosPorPersonas();
+    public List<IngresoPorPersonasDTO> reportePorPersonas(
+            @RequestParam LocalDate fechaInicio,
+            @RequestParam LocalDate fechaFin) {
+        return reporteService.reporteIngresosPorPersonas(fechaInicio, fechaFin);
     }
 }
