@@ -7,27 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath>
+        <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="rack-semanal" />
         <module name="config-server" />
         <module name="registro-comprobantes" />
         <module name="dcto-personas" />
-        <module name="reportes" />
         <module name="gateway-server" />
+        <module name="reportes" />
         <module name="dcto-frecuente" />
-        <module name="tarifa-reserva" />
         <module name="eureka-server" />
-      </profile>
-      <profile name="Annotation profile for tarifas-especiales" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath>
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-        </processorPath>
+        <module name="tarifa-reserva" />
         <module name="tarifas-especiales" />
       </profile>
     </annotationProcessing>
