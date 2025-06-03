@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tarifa-reserva
+  namespace: kartingrm
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: tarifa-reserva
+    template:
+      metadata:
+        labels:
+          app: tarifa-reserva
+      spec:
+        containers:
+          - name: tarifa-reserva
+            image: nakssu/tarifa-reserva:latest
+            env:
+              - name: SERVER_PORT
+                value: "0"

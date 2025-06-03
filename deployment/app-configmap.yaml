@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  CONFIG_SERVER_URL: "http://config-server-service:8888"
+  EUREKA_SERVER_URL: "http://eureka-server-service:8761/eureka/"
+
+  SPRING_DATASOURCE_URL_RMF1: "jdbc:postgresql://postgres-db-service:5432/rmf1"
+  SPRING_DATASOURCE_URL_RMF2: "jdbc:postgresql://postgres-db-service:5432/rmf2"
+  SPRING_DATASOURCE_URL_RMF3: "jdbc:postgresql://postgres-db-service:5432/rmf3"
+  SPRING_DATASOURCE_URL_RFM5: "jdbc:postgresql://postgres-db-service:5432/rfm5"
+  SPRING_DATASOURCE_URL_RMF6: "jdbc:postgresql://postgres-db-service:5432/rmf6"
+  SPRING_DATASOURCE_USERNAME: "postgres"
