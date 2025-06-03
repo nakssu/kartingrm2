@@ -11,7 +11,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="rack-semanal" />
-        <module name="config-server" />
         <module name="registro-comprobantes" />
         <module name="dcto-personas" />
         <module name="gateway-server" />
@@ -20,6 +19,12 @@
         <module name="eureka-server" />
         <module name="tarifa-reserva" />
         <module name="tarifas-especiales" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
       </profile>
     </annotationProcessing>
   </component>
