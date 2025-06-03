@@ -16,7 +16,6 @@
         <module name="gateway-server" />
         <module name="reportes" />
         <module name="dcto-frecuente" />
-        <module name="eureka-server" />
         <module name="tarifa-reserva" />
         <module name="tarifas-especiales" />
       </profile>
@@ -25,6 +24,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
   </component>

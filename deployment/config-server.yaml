@@ -19,3 +19,18 @@ spec:
           image: nakssu/config-server:latest
           ports:
             - containerPort: 8888
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-service
+  labels:
+    app: config-server-service
+spec:
+  selector:
+    app: config-server
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+  type: LoadBalancer
