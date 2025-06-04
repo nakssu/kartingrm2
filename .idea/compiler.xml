@@ -13,7 +13,6 @@
         <module name="rack-semanal" />
         <module name="registro-comprobantes" />
         <module name="dcto-personas" />
-        <module name="gateway-server" />
         <module name="reportes" />
         <module name="dcto-frecuente" />
         <module name="tarifa-reserva" />
@@ -25,6 +24,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="eureka-server" />
+        <module name="gateway-server" />
       </profile>
     </annotationProcessing>
   </component>
