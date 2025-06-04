@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server
+  name: config-server-deployment
   labels:
-    app: config-server
+    app: config-server-deployment
 spec:
   selector:
     matchLabels:
-      app: config-server
+      app: config-server-deployment
   replicas: 1
   template:
     metadata:
       labels:
-        app: config-server
+        app: config-server-deployment
     spec:
       containers:
         - name: config-server
@@ -28,7 +28,7 @@ metadata:
     app: config-server-service
 spec:
   selector:
-    app: config-server
+    app: config-server-deployment
   ports:
     - protocol: TCP
       port: 8888
