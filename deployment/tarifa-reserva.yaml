@@ -1,21 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tarifa-reserva
-  namespace: kartingrm
+  name: tarifa-reserva-deployment
+  labels:
+    app: tarifa-reserva-deployment
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: tarifa-reserva
-    template:
-      metadata:
-        labels:
-          app: tarifa-reserva
-      spec:
-        containers:
-          - name: tarifa-reserva
-            image: nakssu/tarifa-reserva:latest
-            env:
-              - name: SERVER_PORT
-                value: "0"
+  selector:
+    matchLabels:
+      app: tarifa-reserva-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tarifa-reserva-deployment
+    spec:
+      containers:
+        - name: tarifa-reserva
+          image: nakssu/tarifa-reserva:latest
+          ports:
+            - containerPort: 8091
+          env:
+            - name: SERVER_PORT
+              value: "0"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_HOST_TARIFA_RESERVA
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_PORT_TARIFA_RESERVA
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_NAME_TARIFA_RESERVA
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: DB_PASSWORD

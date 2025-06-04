@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config-map
+  labels:
+    app: postgres-config-map
+data:
+  DB_HOST_TARIFA_RESERVA: db-tarifa-reserva-service
+  DB_PORT_TARIFA_RESERVA: "5432"
+  DB_NAME_TARIFA_RESERVA: tarifareservadb
+
+  #DB_HOST_REPAIR: db-repair-service
+  #DB_PORT_REPAIR: "5433"
+  #DB_NAME_REPAIR: msrepairdb
+
+  #DB_HOST_REPAIRLIST: db-repairlist-service
+  #DB_PORT_REPAIRLIST: "5434"
+  #DB_NAME_REPAIRLIST: msrepairlistdb
+
+  #DB_HOST_REPORT: db-report-service
+  #DB_PORT_REPORT: "5435"
+  #DB_NAME_REPORT: msreportdb
