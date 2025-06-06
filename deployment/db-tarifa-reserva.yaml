@@ -1,37 +1,24 @@
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: db-tarifa-reserva-pv
-  labels:
-    type: local
-spec:
-  storageClassName: standard
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/data/db-tarifa-reserva-data"
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: ConfigMap
 metadata:
-  name: db-tarifa-reserva-pvc
-  labels:
-    app: postgres
-    tier: database
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+  name: pg-init-tarifas-sql
+  namespace: kartingrm
+data:
+  init-tarifas.sql: |
+    CREATE TABLE IF NOT EXISTS tarifas (
+                                           id           SERIAL PRIMARY KEY,
+                                           tipo_dia     INT NOT NULL,        -- 0: NORMAL, 1: FINDE, 2: FERIADO
+                                           tipo_reserva INT NOT NULL,        -- 0: VUELTAS_10, 1: VUELTAS_15, 2: VUELTAS_20
+                                           valor        INT NOT NULL,
+                                           CONSTRAINT unique_tarifa UNIQUE (tipo_dia, tipo_reserva)
+        );
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-tarifa-reserva-deployment
+  namespace: kartingrm
   labels:
     app: db-tarifa-reserva-deployment
     tier: database
@@ -39,6 +26,7 @@ spec:
   selector:
     matchLabels:
       app: db-tarifa-reserva-deployment
+      tier: database
   strategy:
     type: Recreate
   template:
@@ -49,8 +37,8 @@ spec:
     spec:
       containers:
         - name: db-tarifa-reserva
-          image: postgres
-          imagePullPolicy: "IfNotPresent"
+          image: postgres:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432
           env:
@@ -64,20 +52,35 @@ spec:
                 secretKeyRef:
                   name: postgres-credentials
                   key: DB_PASSWORD
+              #IMPORTANTE QUE ESTA VARIABLE DE ENTORNO ES LA QUE CREA LA DATABASE NO EL CONFIGMAP XD
+            - name: POSTGRES_DB
+              value: "tarifareservadb"
+
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: db-tarifa-reserva-data
+
+            - mountPath: /docker-entrypoint-initdb.d
+              name: init-sql
       volumes:
         - name: db-tarifa-reserva-data
           persistentVolumeClaim:
             claimName: db-tarifa-reserva-pvc
+
+        - name: init-sql
+          configMap:
+            name: pg-init-tarifas-sql
+            items:
+              - key: init-tarifas.sql
+                path: init-tarifas.sql
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-tarifa-reserva-service
+  name: db-tarifareserva-service
+  namespace: kartingrm
   labels:
-    app: db-tarifa-reserva-service
+    app: db-tarifareserva-service
     tier: database
 spec:
   ports:
@@ -87,4 +90,4 @@ spec:
   selector:
     app: db-tarifa-reserva-deployment
     tier: database
-  type: LoadBalancer
+  type: ClusterIP

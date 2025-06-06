@@ -34,7 +34,6 @@ public class ReservaService {
         if (dia == DayOfWeek.SATURDAY || dia == DayOfWeek.SUNDAY) {
             return TarifaEntity.TipoDia.FINDE;
         }
-        // Aquí podrías agregar lógica para feriados
         return TarifaEntity.TipoDia.NORMAL;
     }
 

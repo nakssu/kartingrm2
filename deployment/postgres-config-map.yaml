@@ -2,12 +2,13 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: postgres-config-map
+  namespace: kartingrm
   labels:
     app: postgres-config-map
 data:
-  DB_HOST_TARIFA_RESERVA: "db-tarifa-reserva-service"
-  DB_PORT_TARIFA_RESERVA: "5432"
-  DB_NAME_TARIFA_RESERVA: "tarifareservadb"
+  DB_HOST_TARIFARESERVA: db-tarifareserva-service
+  DB_PORT_TARIFARESERVA: "5432"
+  DB_NAME_TARIFARESERVA: tarifareservadb
 
   #DB_HOST_REPAIR: db-repair-service
   #DB_PORT_REPAIR: "5433"

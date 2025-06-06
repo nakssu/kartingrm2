@@ -23,7 +23,7 @@ spring:
       routes:
         # M1
         - id: tarifa-reserva
-          uri: lb://tarifa-reserva:8091
+          uri: lb://tarifa-reserva:8090
           predicates:
             - Path=/api/reservas/**
             - Path=/api/tarifas/**
