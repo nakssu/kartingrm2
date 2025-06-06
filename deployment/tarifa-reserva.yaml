@@ -4,16 +4,16 @@ metadata:
   name: tarifa-reserva-deployment
   namespace: kartingrm
   labels:
-    app: tarifa-reserva-deployment
+    app: tarifa-reserva
 spec:
   selector:
     matchLabels:
-      app: tarifa-reserva-deployment
+      app: tarifa-reserva
   replicas: 1
   template:
     metadata:
       labels:
-        app: tarifa-reserva-deployment
+        app: tarifa-reserva
     spec:
       containers:
         - name: tarifa-reserva
@@ -58,9 +58,9 @@ metadata:
     app: tarifa-reserva-service
 spec:
   selector:
-    app: tarifa-reserva-service
+    app: tarifa-reserva
   ports:
     - protocol: TCP
-      port: 8090
-      targetPort: 8090
+      port: 8091
+      targetPort: 8091
   type: ClusterIP
