@@ -3,23 +3,27 @@ package com.tarifa_reserva.tarifa_reserva.controllers;
 import com.tarifa_reserva.tarifa_reserva.entities.TarifaEntity;
 import com.tarifa_reserva.tarifa_reserva.services.TarifaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/tarifas")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class TarifaController {
-    private final TarifaService tarifaService;
+    @Autowired
+    TarifaService tarifaService;
 
     @GetMapping("/")
-    public List<TarifaEntity> getAllTarifas() {
-        return tarifaService.obtenerTodasTarifas();
+    public ResponseEntity<List<TarifaEntity>> obtenerTarifas() {
+        return ResponseEntity.ok(tarifaService.obtenerTodasTarifas());
     }
 
-    @PostMapping("/")
-    public void updateTarifas(@RequestBody List<TarifaEntity> tarifas) {
+    @PutMapping("/")
+    public ResponseEntity<Void> actualizarTarifas(@RequestBody List<TarifaEntity> tarifas) {
         tarifaService.actualizarTarifas(tarifas);
+        return ResponseEntity.ok().build();
     }
 }

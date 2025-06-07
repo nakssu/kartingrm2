@@ -1,18 +1,31 @@
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pg-init-tarifas-sql
+  name: pg-init-sql-tarifa-reserva
   namespace: kartingrm
 data:
-  init-tarifas.sql: |
+  sqlTarifaReserva.sql: |
+    -- Tabla de tarifas (solo para microservicio tarifa-reserva)
     CREATE TABLE IF NOT EXISTS tarifas (
-                                           id           SERIAL PRIMARY KEY,
-                                           tipo_dia     INT NOT NULL,        -- 0: NORMAL, 1: FINDE, 2: FERIADO
-                                           tipo_reserva INT NOT NULL,        -- 0: VUELTAS_10, 1: VUELTAS_15, 2: VUELTAS_20
-                                           valor        INT NOT NULL,
+                                           id SERIAL PRIMARY KEY,
+                                           tipo_dia INT NOT NULL,        -- 0: NORMAL, 1: FINDE, 2: FERIADO
+                                           tipo_reserva INT NOT NULL,    -- 0: VUELTAS_10, 1: VUELTAS_15, 2: VUELTAS_20
+                                           valor INT NOT NULL,
                                            CONSTRAINT unique_tarifa UNIQUE (tipo_dia, tipo_reserva)
         );
+
+    -- Insertar tarifas base
+    INSERT INTO tarifas (tipo_dia, tipo_reserva, valor) VALUES
+                                                            (0, 0, 15000),  -- NORMAL, VUELTAS_10
+                                                            (0, 1, 20000),  -- NORMAL, VUELTAS_15
+                                                            (0, 2, 25000),  -- NORMAL, VUELTAS_20
+                                                            (1, 0, 30),     -- FINDE, VUELTAS_10
+                                                            (1, 1, 17000),  -- FINDE, VUELTAS_15
+                                                            (1, 2, 21000),  -- FINDE, VUELTAS_20
+                                                            (2, 0, 15000),  -- FERIADO, VUELTAS_10
+                                                            (2, 1, 20000),  -- FERIADO, VUELTAS_15
+                                                            (2, 2, 25000)   -- FERIADO, VUELTAS_20
+        ON CONFLICT DO NOTHING;
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,6 +48,13 @@ spec:
         app: db-tarifa-reserva
         tier: database
     spec:
+      initContainers:
+        - name: init-db
+          image: busybox:latest
+          command: [ 'sh', '-c', 'rm -rf /var/lib/postgresql/data/*' ]
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: db-tarifa-reserva-data
       containers:
         - name: db-tarifa
           image: postgres:latest
@@ -61,18 +81,18 @@ spec:
               name: db-tarifa-reserva-data
 
             - mountPath: /docker-entrypoint-initdb.d
-              name: init-sql
+              name: init-sql-tarifa-reserva
       volumes:
         - name: db-tarifa-reserva-data
           persistentVolumeClaim:
             claimName: db-tarifa-reserva-pvc
 
-        - name: init-sql
+        - name: init-sql-tarifa-reserva
           configMap:
-            name: pg-init-tarifas-sql
+            name: pg-init-sql-tarifa-reserva
             items:
-              - key: init-tarifas.sql
-                path: init-tarifas.sql
+              - key: sqlTarifaReserva.sql
+                path: sqlTarifaReserva.sql
 ---
 apiVersion: v1
 kind: Service
@@ -91,3 +111,15 @@ spec:
     app: db-tarifa-reserva
     tier: database
   type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-tarifa-reserva-pvc
+  namespace: kartingrm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
