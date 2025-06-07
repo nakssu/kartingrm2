@@ -16,9 +16,18 @@ public class TarifaController {
     @Autowired
     TarifaService tarifaService;
 
+    /*
     @GetMapping("/")
     public ResponseEntity<List<TarifaEntity>> obtenerTarifas() {
         return ResponseEntity.ok(tarifaService.obtenerTodasTarifas());
+    }
+    */
+
+    @GetMapping("/")
+    public ResponseEntity<List<TarifaEntity>> obtenerTarifas() {
+        List<TarifaEntity> tarifas = tarifaService.obtenerTodasTarifas();
+        System.out.println("Tarifas obtenidas: " + tarifas);
+        return ResponseEntity.ok(tarifas);
     }
 
     @PutMapping("/")
