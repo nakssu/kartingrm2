@@ -17,26 +17,26 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-tarifa-reserva-deployment
+  name: db-tarifa-reserva
   namespace: kartingrm
   labels:
-    app: db-tarifa-reserva-deployment
+    app: db-tarifa-reserva
     tier: database
 spec:
   selector:
     matchLabels:
-      app: db-tarifa-reserva-deployment
+      app: db-tarifa-reserva
       tier: database
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: db-tarifa-reserva-deployment
+        app: db-tarifa-reserva
         tier: database
     spec:
       containers:
-        - name: db-tarifa-reserva
+        - name: db-tarifa
           image: postgres:latest
           imagePullPolicy: IfNotPresent
           ports:
@@ -77,10 +77,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-tarifareserva-service
+  name: db-tarifareserva
   namespace: kartingrm
   labels:
-    app: db-tarifareserva-service
+    app: db-tarifareserva
     tier: database
 spec:
   ports:
@@ -88,6 +88,6 @@ spec:
       targetPort: 5432
       protocol: TCP
   selector:
-    app: db-tarifa-reserva-deployment
+    app: db-tarifa-reserva
     tier: database
   type: ClusterIP

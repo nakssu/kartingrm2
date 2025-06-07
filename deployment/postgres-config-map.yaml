@@ -6,7 +6,7 @@ metadata:
   labels:
     app: postgres-config-map
 data:
-  DB_HOST_TARIFARESERVA: db-tarifareserva-service
+  DB_HOST_TARIFARESERVA: db-tarifareserva
   DB_PORT_TARIFARESERVA: "5432"
   DB_NAME_TARIFARESERVA: tarifareservadb
 

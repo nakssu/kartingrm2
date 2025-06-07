@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server-deployment
+  name: config-server
+  namespace: kartingrm
   labels:
-    app: config-server-deployment
+    app: config-server
 spec:
   selector:
     matchLabels:
-      app: config-server-deployment
+      app: config-server
   replicas: 1
   template:
     metadata:
       labels:
-        app: config-server-deployment
+        app: config-server
     spec:
       containers:
         - name: config-server
@@ -23,13 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: config-server-service
+  name: config-server
   namespace: kartingrm
   labels:
-    app: config-server-service
+    app: config-server
 spec:
   selector:
-    app: config-server-deployment
+    app: config-server
   ports:
     - protocol: TCP
       port: 8888

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tarifa-reserva-deployment
+  name: tarifa-reserva
   namespace: kartingrm
   labels:
     app: tarifa-reserva
@@ -52,10 +52,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tarifa-reserva-service
+  name: tarifa-reserva
   namespace: kartingrm
   labels:
-    app: tarifa-reserva-service
+    app: tarifa-reserva
 spec:
   selector:
     app: tarifa-reserva
