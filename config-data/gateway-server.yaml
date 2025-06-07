@@ -16,11 +16,14 @@ spring:
           uri: lb://tarifa-reserva
           predicates:
             - Path=/api/tarifas/**
-          filters:
-            - StripPrefix=1
       globalcors:
         cors-configurations:
           "[/**]":
             allowedOrigins: "*"
             allowedMethods: "*"
             allowedHeaders: "*"
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.reactive: DEBUG
+    reactor.netty: DEBUG
