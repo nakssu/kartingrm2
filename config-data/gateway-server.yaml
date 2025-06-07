@@ -1,19 +1,23 @@
 server:
   port: 8090
+
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
+
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-          strip-prefix: true
+      routes:
+        - id: tarifa-reserva
+          uri: lb://TARIFA-RESERVA
+          predicates:
+            - Path=/tarifa-reserva/**
+          filters:
+            - StripPrefix=1
       globalcors:
         cors-configurations:
           "[/**]":
