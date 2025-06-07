@@ -14,6 +14,16 @@
         <option value="$PROJECT_DIR$/config-server/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-server/gateway-server/pom.xml" />
+        <option value="$PROJECT_DIR$/tarifas-especiales/pom.xml" />
+        <option value="$PROJECT_DIR$/tarifa-reserva/pom.xml" />
+        <option value="$PROJECT_DIR$/reportes/pom.xml" />
+        <option value="$PROJECT_DIR$/registro-comprobantes/pom.xml" />
+        <option value="$PROJECT_DIR$/rack-semanal/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway-server/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dcto-personas/pom.xml" />
+        <option value="$PROJECT_DIR$/dcto-frecuente/pom.xml" />
+        <option value="$PROJECT_DIR$/config-server/pom.xml" />
       </list>
     </option>
   </component>

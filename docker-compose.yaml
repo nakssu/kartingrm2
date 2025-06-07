@@ -1,0 +1,40 @@
+services:
+  config-server:
+    build: ./config-server
+    image: nakssu/config-server:latest
+
+  dcto-frecuente:
+    build: ./dcto-frecuente
+    image: nakssu/dcto-frecuente:latest
+
+  dcto-personas:
+    build: ./dcto-personas
+    image: nakssu/dcto-personas:latest
+
+  eureka-server:
+    build: ./eureka-server
+    image: nakssu/eureka-server:latest
+
+  gateway-server:
+    build: ./gateway-server
+    image: nakssu/gateway-server:latest
+
+  rack-semanal:
+    build: ./rack-semanal
+    image: nakssu/rack-semanal:latest
+
+  registro-comprobantes:
+    build: ./registro-comprobantes
+    image: nakssu/registro-comprobantes:latest
+
+  reportes:
+    build: ./reportes
+    image: nakssu/reportes:latest
+
+  tarifa-reserva:
+    build: ./tarifa-reserva
+    image: nakssu/tarifa-reserva:latest
+
+  tarifas-especiales:
+    build: ./tarifas-especiales
+    image: nakssu/tarifas-especiales:latest
