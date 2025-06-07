@@ -1,5 +1,5 @@
 server:
-  port: 8097
+  port: 0
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/reportes_db

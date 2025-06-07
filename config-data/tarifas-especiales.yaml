@@ -1,5 +1,5 @@
 server:
-  port: 8094
+  port: 0
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/tarifas_especiales_db
