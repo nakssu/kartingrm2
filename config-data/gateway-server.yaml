@@ -12,47 +12,10 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       globalcors:
         cors-configurations:
           "[/**]":
             allowedOrigins: "*"
             allowedMethods: "*"
             allowedHeaders: "*"
-      routes:
-        # M1
-        - id: tarifa-reserva
-          uri: lb://tarifa-reserva
-          predicates:
-            - Path=/api/reservas/**
-            - Path=/api/tarifas/**
-        # M2
-        - id: dcto-personas
-          uri: lb://dcto-personas
-          predicates:
-            - Path=/api/dcto-personas/**
-        # M3
-        - id: dcto-frecuente
-          uri: lb://dcto-frecuente
-          predicates:
-            - Path=/api/dcto-frecuente/**
-        # M4
-        - id: tarifas-especiales
-          uri: lb://tarifas-especiales
-          predicates:
-            - Path=/api/tarifas-especiales/**
-        # M5
-        - id: registro-comprobantes
-          uri: lb://registro-comprobantes
-          predicates:
-            - Path=/api/comprobantes/**
-            - Path=/api/reservas/**
-        # M6
-        - id: rack-semanal
-          uri: lb://rack-semanal
-          predicates:
-            - Path=/api/rack-semanal/**
-        # M7
-        - id: reportes
-          uri: lb://reportes
-          predicates:
-            - Path=/api/reportes/**

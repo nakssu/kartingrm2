@@ -13,12 +13,12 @@ import java.util.List;
 public class ReservaController {
     private final ReservaService reservaService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<ReservaEntity> getReservas() {
         return reservaService.getReservas();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ReservaEntity crearReserva(@RequestBody ReservaEntity reserva) {
         return reservaService.saveReserva(reserva);
     }

@@ -13,12 +13,12 @@ import java.util.List;
 public class TarifaController {
     private final TarifaService tarifaService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<TarifaEntity> getAllTarifas() {
         return tarifaService.obtenerTodasTarifas();
     }
 
-    @PostMapping("/bulk")
+    @PostMapping("/")
     public void updateTarifas(@RequestBody List<TarifaEntity> tarifas) {
         tarifaService.actualizarTarifas(tarifas);
     }
