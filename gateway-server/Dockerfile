@@ -1,4 +1,6 @@
 FROM maven:3.9-eclipse-temurin-17 AS builder
+RUN apt-get update && apt-get install -y curl
+
 
 WORKDIR /app
 
